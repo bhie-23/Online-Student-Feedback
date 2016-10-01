@@ -1,27 +1,28 @@
-<!DOCTYPE html>
 <?php
-
+	session_start();
+	include "../bucket.php";
+	$obDBRel = new DBRel;
 	error_reporting(0);
+	$obDBRel->redirect();
+
 	//Obtaining values from Form
 	$sub=$_POST['subject'];
 	
 	//Connecting to DB
-	$conn = new mysqli("localhost", "root", "pass","mp");
+	$conn = $obDBRel->DBconn();
 	
-	if ($conn->connect_error)
-		die("Connection failed: " . $conn->connect_error);
-	
-	//Inserting values to Subject Table
-	if($sub=="")
-		echo "<script> alert('Enter a subject.'); </script>";
-	else{
-		$sql="INSERT INTO Subject VALUES ('$sub')";
-		if ($conn->query($sql) === TRUE)
-			echo "<script> alert('Subject Added!'); </script>";
-		else
-			echo "Error: " . $sql . "<br>" . $conn->error;
+	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+		//Inserting values to Subject Table
+		if($sub=="")
+			echo "<script> alert('Enter a subject.'); </script>";
+		else{
+			$sql="INSERT INTO Subject VALUES ('$sub')";
+			if ($conn->query($sql) === TRUE)
+				echo "<script> alert('Subject Added!'); </script>";
+			else
+				echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 	}
-	
 	//Saving Resource
 	$conn->close();
 	
@@ -29,10 +30,7 @@
 	function abc(){
 		
 		//Connecting PHP with DBMS and Obtaining Result of a querry
-		$conn = new mysqli("localhost", "root", "pass","mp");
-
-		if ($conn->connect_error)
-			die("Connection failed: " . $conn->connect_error);
+		$conn = $obDBRel->DBConn();
 	
 		$sql = "SELECT S_Name FROM Subject";
 		$result = $conn->query($sql);
@@ -50,13 +48,12 @@
 		$conn->close();
 	}
 ?>
-<html>
+<!DOCTYPE html>
 	<head>
-		<script>
-		</script>
 		<title>Subject Add</title>
+		<link rel="stylesheet" type="text/css" href="admin.css">
 	</head>
-	<body align=center>
+	<body>
 		<h1 style="background-color:#B0B0B0;">Add Subjects</h1><br><br><br>
 		<form action="addsub.php" method="POST">
 			Please enter the Subject to be added:
