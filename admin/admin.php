@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<header>
-			<img src ="../tellus-logo.png"/>
+			<img src ="../images/tellus-logo.png"/>
 			<span>
 				<a href="../logout">Logout</a>
 			</span>
@@ -20,19 +20,31 @@
 			<h1>Admin's Utility Space:</h1>
 			<form action=admin.php method=post>
 				<div>
-					<h3>Add  Subject</h3>
-					<a href='addsub.php'><img src="../images/add.png"></a>				
-					<p>Click to insert subjects to the database for adding feedback.</p>
+					<div class=lnkimg>
+						<a href='addsub.php'><img src="../images/add.png"></a>
+					</div>
+					<div class=shorten>
+						<h3>Add  Subject</h3>
+						<p>Click to insert subjects to the database for adding feedback.</p>
+					</div>
 				</div>
 				<div>
-					<h3>Add  Student</h3>
-					<a href='addstudent.php'><img src="../images/add.png"></a>
-					<p>Click to insert students to the database.</p>
+					<div class=lnkimg>
+						<a href='addstudent.php'><img src="../images/add.png"></a>
+					</div>
+					<div class="shorten">
+						<h3>Add  Student</h3>
+						<p>Click to insert students to the database.</p>
+					</div>
 				</div>
 				<div>
-					<h3>Get Feedback</h3>
-					<a href='feedback.php'><img src="../images/feedback.png"></input></a>
-					<p>Click to see all the feedback in the database.</p>
+					<div class="lnkimg">
+						<a href='feedback.php'><img src="../images/feedback.png"></input></a>
+					</div>
+					<div class="shorten">
+						<h3>Get Feedback</h3>
+						<p>Click to see all the feedback in the database.</p>
+					</div>
 				</div>
 			</form>
 		</article>
