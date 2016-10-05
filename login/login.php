@@ -16,8 +16,6 @@
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
-		//
-		$_SESSION['pass']=$_POST['pass'];
 		$_SESSION['user']=$_POST['user'];
 		
 		//Checking the entered username (admin)
@@ -26,11 +24,14 @@
 		
 		//Checking the entered username (student)
 		while($row = $result->fetch_assoc())
-			if(trim($_SESSION['user']) == trim($row['Roll_No']) && trim($_SESSION['pass']) == trim($row['Pass']))
+			if(trim($_POST['user']) == trim($row['Roll_No']) && trim(md5($_POST['pass'])) == trim($row['Pass']))
 				$flag = 1;
 			
 		if($flag == 1)
 			header('Location:../student/student.php');
+
+		else
+			echo "<script> alert('Wrong Username or Password!'); </script>";
 	}
 	
 	$conn->close();

@@ -25,41 +25,9 @@ header > span > a:hover{
 }
 article{
 	margin-top: 50px;
-	text-align: center;
-}
-form{
-	margin: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-.input{
-	display: flex;
-	flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-input{
-	background-color: #e0e0e0;
-	padding:7px;
-	font-size:20px;
-	border-style:hidden;
-	border-radius: 2px;
-	border-width:0px; 
-}
-button{
-	height: 35px;
-	color: #ffffff;
-	font-size: 17px;
-	background: #c4ffad;
-	padding: 5px;
-	text-decoration: none;
-	border: 0px;
-	margin-left: 10px;
-}
-button:hover{
-	background: #00f54e;
-	text-decoration: none;
 }
 .output{
 	background-color: white;
