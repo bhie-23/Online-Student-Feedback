@@ -2,7 +2,7 @@
 	session_start();
 	include "../bucket.php";
 	$obDBRel = new DBRel;
-	//error_reporting(0);
+	error_reporting(0);
 	$obDBRel->redirect();
 	
 	//Connecting to DB
@@ -36,14 +36,14 @@
 		<header>
 			<img src ="../images/tellus-logo.png"/>
 			<span>
-				<a href="../logout">Logout</a>
+				<a href="../logout.php">Logout</a>
 			</span>
 		</header>
 		<article>
 			<h1>Add a Subject:</h1>
 			<form action=addsub.php method=post>
 				<div class=input>
-					<input type=text name=subject required>
+					<input type=text name=subject placeholder="Subject Name" required>
 					<button type=submit>Append</button>
 				</div>
 				<div class=output>
@@ -55,8 +55,8 @@
 
 						echo "<table class=slist>";
 						echo "<tr>";
-						echo 	"<td>Subject ID</td>";
-						echo 	"<td>Subject Name</td>";
+						echo 	"<th>Subject ID</td>";
+						echo 	"<th>Subject Name</td>";
 						echo "</tr>";
 
 						if($result->num_rows > 0)

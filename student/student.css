@@ -24,14 +24,27 @@ header > span > a:hover{
 	color: #00f54e;
 }
 article{
-	margin-top: 50px;
-	text-align: center;
-}
-form{
-	margin: 50px;
+	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+select{
+	background-color: #e0e0e0;
+	margin: 10px;
+	padding:7px;
+	width: 200px;
+	font-size:20px;
+	border-style:hidden;
+	border-radius: 2px;
+	border-width:0px; 
+}
+form{
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
 }
 .input{
 	display: flex;
@@ -39,18 +52,26 @@ form{
     justify-content: center;
     align-items: center;
 }
-input{
-	background-color: #e0e0e0;
-	padding:7px;
-	font-size:20px;
-	border-style:hidden;
-	border-radius: 2px;
-	border-width:0px; 
+.output{
+	background-color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width:850px;
+	margin-top: 40px;
+	min-height: 250px;
+	padding: 20px;
+	box-shadow: 0px 0px 17px 8px rgba(0, 0, 0,0.05);
+}
+textarea{
+	border:none;
+	width: 600px;
 }
 button{
-	height: 35px;
+	margin: 10px;
+	height: 38px;
 	color: #ffffff;
-	font-size: 17px;
+	font-size: 20px;
 	background: #c4ffad;
 	padding: 5px;
 	text-decoration: none;
@@ -60,29 +81,4 @@ button{
 button:hover{
 	background: #00f54e;
 	text-decoration: none;
-}
-.output{
-	background-color: white;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	width:900px;
-	margin-top: 80px;
-	min-height: 250px;
-	box-shadow: 0px 0px 17px 8px rgba(0, 0, 0,0.05);
-}
-.slist td{
-	text-align: center;
-}
-.slist{
-	margin-top: 40px;
-	margin-bottom: 40px;
-	width: 500px;
-
-}
-td{
-	border-bottom: 1px solid #ddd;
-}
-th{
-	border-bottom: 2px solid #ddd;
 }

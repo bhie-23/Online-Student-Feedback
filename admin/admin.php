@@ -13,12 +13,12 @@
 		<header>
 			<img src ="../images/tellus-logo.png"/>
 			<span>
-				<a href="../logout">Logout</a>
+				<a href="../logout.php">Logout</a>
 			</span>
 		</header>
 		<article>
 			<h1>Admin's Utility Space:</h1>
-			<form action=admin.php method=post>
+			<div class=main>
 				<div>
 					<div class=lnkimg>
 						<a href='addsub.php'><img src="../images/add.png"></a>
@@ -46,7 +46,7 @@
 						<p>Click to see all the feedback in the database.</p>
 					</div>
 				</div>
-			</form>
+			</div>
 		</article>
 	</body>
 </html>

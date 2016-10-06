@@ -1,65 +1,82 @@
-<!DOCTYPE html>
 <?php
 	error_reporting(0);
+	session_start();
+	include "../bucket.php";
+	$obDBRel = new DBRel;
+	$obDBRel->redirect();
 	
 	//Values from the Form
-	$roll=$_POST['rollno'];
-	$name=$_POST['name'];
-	$pass=$_POST['password'];
+	$name=$_POST['sname'];
+	$pass=md5($_POST['pwd']);
 	
 	//Connection to DB
-	$conn = new mysqli("localhost", "root", "pass");
-	
-	if ($conn->connect_error)
-		die("Connection failed: " . $conn->connect_error);
-	
-	//Inserting values into Student Table
-	if($roll!='' || $name!='' || $pass!=''){
-		$sql="INSERT INTO Student VALUES ($roll, '$name', $pass)";
-		
-		if ($conn->query($sql) === TRUE)
-			echo "<script> alert('Student Added!'); </script>";
-		else
-			echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-	
-	//Saving resources
-	$conn->close();
-?>
-<html>
-	<head>
-		<title>Add Student</title>
-	</head>
-		<h1 style="background-color: #B0B0B0;">Add Student</h1>
-		<body align=center>
-		<form method=post>
-			<center><br><br><br><table border="0" width="30%" >
-		
-			<tr>
-			<td><b><h3>Enter Roll No </h3></b></td>
-			<td>:</td><td><input type="text" name="rollno" size="10"></td>
-			</tr>
-			
-		
-			<tr>
-			<td><b><h3>Enter Name</h3></b></td>
-			<td>:</td><td><input type="text" name="name" size="10"></td>
-			</tr>
-	
-			
-			<tr>
-			<td><b><h3>Enter Password</h3></b></td>
-			<td>:</td><td><input type="password" name="password" size="10"></td>
-			</tr>
-		     
-		  </table>
-		<br><br>
-		
-		<center><input type=submit  value=submit>
-		
-			<center><br/><br/><br/><a href="logout.php"><input style="background-color:black; font-weight:bold; font-size:17px; color:white;" type=button value="Logout"></input></a></center>
+	$conn = $obDBRel->DBConn();
 
-</form>
-	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+		//Inserting values into Student Table
+		if($name!='' || $pass!=''){
+			$sql="INSERT INTO Student VALUES (NULL, '$name', '$pass')";
+			
+			if ($conn->query($sql) === TRUE)
+				echo "<script> alert('Student Added!'); </script>";
+			else
+				echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+		
+		//Saving resources
+		$conn->close();
+	}
+?>
+<!DOCTYPE html>
+	<head>
+		<title>Add Student - Admin</title>
+		<link rel="stylesheet" type="text/css" href="addstudent.css">
+	</head>
+	<body>
+		<header>
+			<img src ="../images/tellus-logo.png"/>
+			<span>
+				<a href="../logout.php">Logout</a>
+			</span>
+		</header>
+		<article>
+			<h1>Add a Subject:</h1>
+			<form action=addstudent.php method=post>
+				<div class=input>
+					<input type=text name=sname placeholder="Student Name" required>
+					<input type=text name=pwd placeholder="Student Password" required>
+					<button type=submit>Append</button>
+				</div>
+				<div class=output>
+					<?php
+						$obDBRelb = new DBRel;
+						$conn=$obDBRelb->DBConn();
+						$sql="Select * from Student";
+						$result = $conn->query($sql);
+
+						echo "<table class=slist>";
+						echo "<tr>";
+						echo 	"<th>Student Roll_No</td>";
+						echo 	"<th>Student Name</td>";
+						echo 	"<th>Password</td>";
+						echo "</tr>";
+
+						if($result->num_rows > 0)
+							while($row = $result->fetch_assoc()){
+								echo "<tr>";
+								echo 	"<td>" . $row["Roll_No"] . "</td>";
+								echo 	"<td>" . $row["Name"] . "</td>";
+								echo 	"<td>" . $row["Pass"] . "</td>";
+								echo "</tr>";
+						}
+
+						echo "</table>";
+
+						$conn->close();
+					?>
+				</div>
+			</form>
+		</article>
 	</body>
 </html>
