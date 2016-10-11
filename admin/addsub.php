@@ -50,7 +50,7 @@
 					<?php
 						$obDBRelb = new DBRel;
 						$conn=$obDBRelb->DBConn();
-						$sql="Select * from Subject";
+						$sql="Select * from Subject order by Sub_No asc";
 						$result = $conn->query($sql);
 
 						echo "<table class=slist>";

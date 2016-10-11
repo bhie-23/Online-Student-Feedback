@@ -35,8 +35,8 @@
 ?>
 <!DOCTYPE html>
 	<head>
-		<title>Feedback - Admin</title>
-		<link rel="stylesheet" type="text/css" href="subfed.css">
+		<title>Delete Subject - Admin</title>
+		<link rel="stylesheet" type="text/css" href="delsub.css">
 	</head>
 	<body>
 		<header>
@@ -46,44 +46,49 @@
 			</span>
 		</header>
 		<article>
-			<form action="subfed.php" method=POST>
+			<h1>Delete a Record from Student:</h1>
+			<form action="delsub.php" method=POST>
 				<div class=input>
 					<?php abc(); ?>
-					<button type=submit>Show</button>
+					<button type=submit>Delete</button>
 				</div>
 				<div class=output>
 					<?php
 						$obDBRelb = new DBRel;
 						$conn=$obDBRelb->DBConn();
-						$sql="Select * from feedback where Sub_Name='".$_POST['SUB']."' order by Fed_No asc";
-						$result = $conn->query($sql);
 
+						$sql="SELECT * FROM Subject order by Sub_No";
+							$result = $conn->query($sql);
+
+						if($result->num_rows > 0){
+							echo "<table class=slist>";
+							echo "<tr>";
+							echo 	"<th>Subject No.</td>";
+							echo 	"<th>Subject Name</td>";
+							echo "</tr>";
+							while($row = $result->fetch_assoc()){
+								echo "<tr>";
+								echo 	"<td>" . $row["Sub_No"] . "</td>";
+								echo 	"<td>" . $row["Sub_Name"] . "</td>";
+								echo "</tr>";
+							}	
+						}
+						else
+							echo "<div align='center' style='font-size:20px'>No Records.</div>";
 
 						if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 							
-							if($result->num_rows > 0){
-								echo "<table class=slist>";
-								echo "<tr>";
-								echo 	"<th>Feedback No.</td>";
-								echo 	"<th>Roll No.</td>";
-								echo 	"<th>Subject Name</td>";
-								echo 	"<th>Feedback</td>";
-								echo "</tr>";
-								while($row = $result->fetch_assoc()){
-									echo "<tr>";
-									echo 	"<td>" . $row["Fed_No"] . "</td>";
-									echo 	"<td>" . $row["Roll_No"] . "</td>";
-									echo 	"<td>" . $row["Sub_Name"] . "</td>";
-									echo 	"<td>" . $row["Feedback"] . "</td>";
-									echo "</tr>";
-								}	
+							$sql="Delete from Subject where Sub_Name='".$_POST['SUB']."'";
+								$result = $conn->query($sql);
+
+							if ($conn->query($sql) === TRUE){
+								echo "<script> alert('Subject Deleted!'); </script>";
+								header('Location:delsub.php');
 							}
 							else
-								echo "<div align='center' style='font-size:20px'>No Feedback submitted.</div>";
-						}
+								echo "Error: " . $sql . "<br>" . $conn->error;
 
-						else
-							echo "<div align='center' style='font-size:20px'>No Feedback submitted.</div>";
+						}
 
 						echo "</table>";
 

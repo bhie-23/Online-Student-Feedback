@@ -22,7 +22,7 @@
 					<?php
 						$obDBRelb = new DBRel;
 						$conn=$obDBRelb->DBConn();
-						$sql="Select * from feedback";
+						$sql="Select * from feedback order by Fed_No asc";
 						$result = $conn->query($sql);
 
 						echo "<table class=slist>";
