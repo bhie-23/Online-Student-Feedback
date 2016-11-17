@@ -2,7 +2,7 @@
 	session_start();
 	include "../bucket.php";
 	$obDBRel = new DBRel;
-	//error_reporting(0);
+	error_reporting(0);
 	$obDBRel->redirect();
 ?>
 <!DOCTYPE html>
@@ -37,6 +37,16 @@
 						<h3>Filtered Feedback</h3>
 						<p>Click to view feedback filtered by Subject.</p>
 					</div>
+				</div>
+				<div>
+					<div class=lnkimg>
+						<a href='delfed.php'><img src="../images/delete.png"></a>
+					</div>
+					<div class=shorten>
+						<h3>Delete Feedback</h3>
+						<p>Click to delete a feedback present in the database.</p>
+					</div>
+				</div>
 			</div>
 		</article>
 	</body>

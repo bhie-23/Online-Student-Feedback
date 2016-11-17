@@ -30,11 +30,29 @@
 				</div>
 				<div>
 					<div class=lnkimg>
+						<a href='delsub.php'><img src="../images/delete.png"></a>
+					</div>
+					<div class=shorten>
+						<h3>Delete  Subject</h3>
+						<p>Click to delete subjects from the database.</p>
+					</div>
+				</div>
+				<div>
+					<div class=lnkimg>
 						<a href='addstudent.php'><img src="../images/add.png"></a>
 					</div>
 					<div class="shorten">
 						<h3>Add  Student</h3>
 						<p>Click to insert students to the database.</p>
+					</div>
+				</div>
+				<div>
+					<div class=lnkimg>
+						<a href='delstudent.php'><img src="../images/delete.png"></a>
+					</div>
+					<div class=shorten>
+						<h3>Delete Student</h3>
+						<p>Click to delete student present in the database.</p>
 					</div>
 				</div>
 				<div>

@@ -12,9 +12,14 @@ header > img{
 	width: 90px;
 	height: auto;
 }
+header > a > img{
+    float: left;
+	width: 40px;
+	height: auto;
+}
 header > span > a{
-	position: fixed;
-	right: 15px;
+	float: right;
+	margin: 7px; 
 	margin-top: 7px; 
 	font-size: 20px;
 	text-decoration: none;

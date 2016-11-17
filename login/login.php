@@ -17,7 +17,8 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		$_SESSION['user']=$_POST['user'];
-		
+		$_SESSION['pass']=$_POST['pass'];
+
 		//Checking the entered username (admin)
 		if($_SESSION['user'] == 'admin' && $_SESSION['pass'] == 'admin')
 			header('location: ../admin/admin.php');

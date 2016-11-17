@@ -35,13 +35,14 @@
 	</head>
 	<body>
 		<header>
+			<a href='admin.php'><img src="../images/back.png"></a>
 			<img src ="../images/tellus-logo.png"/>
 			<span>
 				<a href="../logout.php">Logout</a>
 			</span>
 		</header>
 		<article>
-			<h1>Add a Subject:</h1>
+			<h1>Add a Sutudent:</h1>
 			<form action=addstudent.php method=post>
 				<div class=input>
 					<input type=text name=sname placeholder="Student Name" required>
@@ -52,7 +53,7 @@
 					<?php
 						$obDBRelb = new DBRel;
 						$conn=$obDBRelb->DBConn();
-						$sql="Select * from Student";
+						$sql="Select * from Student order by Roll_No asc";
 						$result = $conn->query($sql);
 
 						echo "<table class=slist>";

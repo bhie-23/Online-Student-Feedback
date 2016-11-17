@@ -12,10 +12,14 @@ header > img{
 	width: 90px;
 	height: auto;
 }
+header > a > img{
+    float: left;
+	width: 40px;
+	height: auto;
+}
 header > span > a{
-	position: fixed;
-	right: 15px;
-	margin-top: 7px; 
+	float: right;
+	margin: 7px; 
 	font-size: 20px;
 	text-decoration: none;
 	color: #6aa441;
