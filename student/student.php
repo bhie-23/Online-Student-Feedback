@@ -53,23 +53,43 @@
 					<button type="submit">Submit</button>
 				</div>
 				<div class="output">
-					<P>1. Was the subject intresting?<BR>
-						<input type="radio" name="q1" value="yes">yes<BR>
-						<input type="radio" name="q1" value="no">no<BR>
-						<input type="radio" name="q1" value="average">average<BR>
-					</p>
+                                    <table>
+                                        <tr>
+                                            <th></th>
+                                            <th>Excellent</th> 
+                                            <th>Good</th>
+                                            <th>Average</th>
+                                            <th>Bad</th>
+                                            <th>Dreadful</th>
+                                        </tr>
 
+					<tr>
+                                            <th><P>1. Was the subject intresting?</p></th>
+                                            <th><input type="radio" name="q1" value="5"></th>
+                                            <th><input type="radio" name="q1" value="4"></th>
+                                            <th><input type="radio" name="q1" value="3"></th>
+                                            <th><input type="radio" name="q1" value="2"></th>                                            
+                                            <th><input type="radio" name="q1" value="1"></th>
+                                        </tr>
+                                        <tr>
+                                            <th><P>2. Was the subject properly conducted?</p></th>
+                                            <th><input type="radio" name="q2" value="5"></th>
+                                            <th><input type="radio" name="q2" value="4"></th>
+                                            <th><input type="radio" name="q2" value="3"></th>
+                                            <th><input type="radio" name="q2" value="2"></th>                                            
+                                            <th><input type="radio" name="q2" value="1"></th>
+                                        </tr>
+                                        <tr>
+                                            <th><P>3. Was tutorial conducted in time?</p></th>
+                                            <th><input type="radio" name="q3" value="5"></th>
+                                            <th><input type="radio" name="q3" value="4"></th>
+                                            <th><input type="radio" name="q3" value="3"></th>
+                                            <th><input type="radio" name="q3" value="2"></th>                                            
+                                            <th><input type="radio" name="q3" value="1"></th>
+                                        </tr>
+                                    </table>
 
-					<P>2. Was the subject properly conducted?<BR>
-						<input type="radio" name="q2" value="yes">yes<BR>
-						<input type="radio" name="q2" value="no">no<BR>
-						<input type="radio" name="q2" value="average">average<BR>
-					</p>
-
-					<P>3. Was tutorial conducted in time?<BR>
-						<input type="radio" name="q3" value="yes">yes<BR>
-						<input type="radio" name="q3" value="no">no<BR>
-					</p>				
+			
 					<textarea name="Feedback" rows="10" cols="50" placeholder="Feedback" required></textarea>
 				</div>
 			</form>
@@ -78,7 +98,10 @@
 	//Obtaining values from Form
 	$sub=$_POST['SUB'];
 	$roll=$_SESSION['user'];
-	$fb=$_POST['Feedback']." 1.".$_POST['q1']." 2.".$_POST['q2']." 3.".$_POST['q3'];
+	$fb=$_POST['Feedback'];
+        $qw1=$_POST['q1'];
+        $qw2=$_POST['q2'];
+        $qw3=$_POST['q3'];
 
 
 	//Connecting to DB
@@ -86,7 +109,7 @@
 
 	//Inserting values to Subject Table
 	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$sql="INSERT INTO Feedback VALUES (NULL,$roll,'$sub','$fb')";
+		$sql="INSERT INTO Feedback VALUES (NULL,$roll,'$sub','$fb',$qw1,$qw2,$qw3)";
 		if ($conn->query($sql) === TRUE)
 			echo "<script> alert('Feedback Added!'); </script>";
 		else

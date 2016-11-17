@@ -83,3 +83,6 @@ button:hover{
 	background: #00f54e;
 	text-decoration: none;
 }
+P{
+    text-align: left;
+}

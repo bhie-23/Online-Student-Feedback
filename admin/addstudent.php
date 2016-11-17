@@ -35,6 +35,7 @@
 	</head>
 	<body>
 		<header>
+			<a href='admin.php'><img src="../images/back.png"></a>
 			<img src ="../images/tellus-logo.png"/>
 			<span>
 				<a href="../logout.php">Logout</a>
